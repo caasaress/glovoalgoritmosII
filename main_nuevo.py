@@ -29,21 +29,27 @@ def ruta(grafo):
 def main():
     grafo = cargar_grafo()
     
-    opciones = {
-        "1": ("Ver la carta", lambda: print("Carta... (importar de db.py)")),
-        "2": ("Hacer un pedido", lambda: pedir(grafo)),
-        "3": ("Rider para un pedido", lambda: asignar(grafo)),
-        "4": ("Ruta entre dos barrios", lambda: ruta(grafo)),
-        "5": ("Planificar el turno", lambda: print("Turno... (importar de turno.py)")),
-    }
-    
     while True:
-        for k, (texto, _) in opciones.items():
-            print(f"{k}. {texto}")
+        print("1. Ver la carta")
+        print("2. Hacer un pedido")
+        print("3. Rider para un pedido")
+        print("4. Ruta entre dos barrios")
+        print("5. Planificar el turno")
             
         eleccion = input("Opción (q para salir): ")
+        
         if eleccion.lower() == "q":
             break
-            
-        accion = opciones.get(eleccion, ("", lambda: print("Opción no existe")))[1]
-        accion()
+        elif eleccion == "1":
+            print("Carta... (importar de db.py)")
+        elif eleccion == "2":
+            pedir(grafo)
+        elif eleccion == "3":
+            asignar(grafo)
+        elif eleccion == "4":
+            ruta(grafo)
+        elif eleccion == "5":
+            print("Turno... (importar de turno.py)")
+        else:
+            print("Opción no existe")
+
